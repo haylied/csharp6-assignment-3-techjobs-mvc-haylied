@@ -153,16 +153,16 @@ public class JobData
             while (reader.Peek() >= 0)
             {
                 string line = reader.ReadLine();
-                string[] rowArray = CSVRowToStringArray(line);
+                string[] rowArray = CSVRowToStringArray(line); //convert line of strings into string array
                 if (rowArray.Length > 0)
                 {
-                    rows.Add(rowArray);
+                    rows.Add(rowArray); //if there is data present in an array of strings, add to rows list of string arrays
                 }
             }
         }
 
         string[] headers = rows[0];
-        rows.Remove(headers);
+        rows.Remove(headers); 
 
         AllJobs = new List<Job>();
 
