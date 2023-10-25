@@ -45,26 +45,32 @@ public class ListController : Controller
     public IActionResult Jobs(string column, string value)
     {
 
-        List<List <Job>> jobs = new List<List<Job>>();
+        // List<List <Job>> jobs = new List<List<Job>>();
+        List<Job> jobs = new List<Job>();
 
         if (value == "View All")
         {
-            jobs.Add(JobData.FindAll());
+            //jobs.Add(JobData.FindAll());
+            //jobs.Union(JobData.FindAll());
+            //jobs = JobData.FindAll();
+            jobs.AddRange(JobData.FindAll());
             ViewBag.title = value;
         }
         else if (column != null)
         {
-            jobs.Add(JobData.FindByColumnAndValue(column, value));
+            //jobs.Union(JobData.FindByColumnAndValue(column, value));
+            jobs = JobData.FindByColumnAndValue(column, value);
             ViewBag.title = column;
         }
         else if (value != null)
         {
-            jobs.Add(JobData.FindByColumnAndValue(column, value));
+            //jobs.Union(JobData.FindByColumnAndValue(column, value));
+            jobs = JobData.FindByColumnAndValue(column, value);
             ViewBag.title = value;
         }
 
             ViewBag.jobs = jobs;
-            return View();
+            return View(ViewBag.jobs);
     }
 }
 

@@ -34,8 +34,8 @@ public class TestTaskTwo
         ListController _controller = new ListController();
         var result = _controller.Jobs("coreCompetency", "Ruby") as ViewResult;
         var jobs = (List<Job>)result.ViewData["jobs"];
-        Assert.AreEqual(3, jobs.Count);
-        Assert.AreEqual(3, jobs[0].Id);
+        Assert.AreEqual(3, jobs?.Count);
+        Assert.AreEqual(3, jobs?[0].Id);
         Assert.AreEqual("Junior Web Developer", jobs[0].Name.ToString());
         Assert.AreEqual("Cozy", jobs[0].Employer.ToString());
         Assert.AreEqual("Portland", jobs[0].Location.ToString());
