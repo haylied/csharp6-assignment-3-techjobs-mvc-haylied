@@ -18,9 +18,9 @@ public class TestTaskThree
     [TestMethod]
     public void TestResultsExistsAndHasCorrectParameters()
     {
-        MethodInfo methodInfo = typeof(SearchController).GetMethod("Results");
+        MethodInfo? methodInfo = typeof(SearchController).GetMethod("Results");
         ParameterInfo[] parameters = methodInfo.GetParameters();
-        Assert.AreEqual(2, parameters.Length);
+        Assert.AreEqual(2, parameters?.Length);
         Assert.AreEqual("System.String", parameters[0].ParameterType.FullName);
         Assert.AreEqual("System.String", parameters[1].ParameterType.FullName);
         Assert.AreEqual("searchType", parameters[0].Name);
@@ -31,8 +31,8 @@ public class TestTaskThree
     [TestMethod]
     public void TestResultsUsesAppropriateLocalVariables()
     {
-        MethodBody methodBody = typeof(SearchController).GetMethod("Results").GetMethodBody();
-        var locals = methodBody.LocalVariables;
+        MethodBody? methodBody = typeof(SearchController).GetMethod("Results").GetMethodBody();
+        var locals = methodBody?.LocalVariables;
         Assert.IsTrue(locals.Count > 1);
     }
 }
