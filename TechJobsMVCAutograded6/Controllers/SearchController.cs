@@ -35,6 +35,7 @@ public class SearchController : Controller
 
         ViewBag.jobs = jobs;
         ViewBag.columns = ListController.ColumnChoices;
+
         return View(jobs);
     }
 }
