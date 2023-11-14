@@ -15,6 +15,7 @@ public class SearchController : Controller
     public IActionResult Index()
     {
         ViewBag.columns = ListController.ColumnChoices;
+        ViewBag.jobs = new List<Job>();
         return View();
     }
 
@@ -36,8 +37,6 @@ public class SearchController : Controller
         ViewBag.jobs = jobs;
         ViewBag.columns = ListController.ColumnChoices;
 
-        return View(jobs);
+        return View("Index");
     }
 }
-
-
